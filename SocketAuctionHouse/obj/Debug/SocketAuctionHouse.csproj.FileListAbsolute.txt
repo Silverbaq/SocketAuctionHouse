@@ -1,0 +1,6 @@
+c:\users\steffen\documents\visual studio 2013\Projects\SocketAuctionHouse\SocketAuctionHouse\bin\Debug\SocketAuctionHouse.exe.config
+c:\users\steffen\documents\visual studio 2013\Projects\SocketAuctionHouse\SocketAuctionHouse\bin\Debug\SocketAuctionHouse.exe
+c:\users\steffen\documents\visual studio 2013\Projects\SocketAuctionHouse\SocketAuctionHouse\bin\Debug\SocketAuctionHouse.pdb
+c:\users\steffen\documents\visual studio 2013\Projects\SocketAuctionHouse\SocketAuctionHouse\obj\Debug\SocketAuctionHouse.csprojResolveAssemblyReference.cache
+c:\users\steffen\documents\visual studio 2013\Projects\SocketAuctionHouse\SocketAuctionHouse\obj\Debug\SocketAuctionHouse.exe
+c:\users\steffen\documents\visual studio 2013\Projects\SocketAuctionHouse\SocketAuctionHouse\obj\Debug\SocketAuctionHouse.pdb
