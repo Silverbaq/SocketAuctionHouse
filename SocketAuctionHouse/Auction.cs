@@ -1,39 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace SocketAuctionHouse
 {
-    class Auction
+    internal class Auction
     {
-        List<AuctionItem> auctionItems = new List<AuctionItem>();
-        private AuctionItem _currentAuction;
-        private int _gravel;
-        private bool _auctionRunning;
-
-        private object gravelLock = new object();
-        private object itemLock = new object();
-
         public delegate void broadcastDelegate(string message);
 
-        public event broadcastDelegate broadcastEvent;
+        private readonly List<AuctionItem> auctionItems = new List<AuctionItem>();
+
+        private readonly object gravelLock = new object();
+        private readonly object itemLock = new object();
+        private bool _auctionRunning;
+        private AuctionItem _currentAuction;
+        private int _gravel;
 
         public Auction()
         {
             // Adds items for the auction to sell
-            auctionItems.Add(new AuctionItem() { winner = "No one", startPrice = 100, endPrice = 100, item = "A Pony" });
-            auctionItems.Add(new AuctionItem() { winner = "No one", startPrice = 100, endPrice = 100, item = "A forrest in Germany" });
-            auctionItems.Add(new AuctionItem() { winner = "No one", startPrice = 100, endPrice = 100, item = "A bucket of eggs" });
-            auctionItems.Add(new AuctionItem() { winner = "No one", startPrice = 100, endPrice = 100, item = "Two empty cola bottles" });
+            auctionItems.Add(new AuctionItem {winner = "No one", startPrice = 100, endPrice = 100, item = "A Pony"});
+            auctionItems.Add(new AuctionItem
+            {
+                winner = "No one",
+                startPrice = 100,
+                endPrice = 100,
+                item = "A forrest in Germany"
+            });
+            auctionItems.Add(new AuctionItem
+            {
+                winner = "No one",
+                startPrice = 100,
+                endPrice = 100,
+                item = "A bucket of eggs"
+            });
+            auctionItems.Add(new AuctionItem
+            {
+                winner = "No one",
+                startPrice = 100,
+                endPrice = 100,
+                item = "Two empty cola bottles"
+            });
         }
+
+        public event broadcastDelegate broadcastEvent;
 
         public void RunAuction()
         {
             // Takes the same actions for every item to sell
-            foreach (var auctionItem in auctionItems)
+            foreach (AuctionItem auctionItem in auctionItems)
             {
                 _currentAuction = auctionItem;
                 _auctionRunning = true;
@@ -42,7 +57,7 @@ namespace SocketAuctionHouse
                 // Sending a broadcast that an auction is starting (if there is anyone)
                 if (broadcastEvent != null)
                     broadcastEvent("Starting auction for: " + _currentAuction.item + " Starting price: " +
-                                       _currentAuction.startPrice);
+                                   _currentAuction.startPrice);
 
                 while (_auctionRunning)
                 {
@@ -77,13 +92,11 @@ namespace SocketAuctionHouse
                 if (broadcastEvent != null)
                     broadcastEvent(_currentAuction.winner + " won\r\n" + _currentAuction.item + " : " +
                                    _currentAuction.endPrice);
-
             }
             // Broadcast that the auction is over.
             if (broadcastEvent != null)
                 broadcastEvent("All auctions are over - Thank you for trying out our AuctionHouse");
         }
-
 
 
         private void ResetGravel()
@@ -118,8 +131,6 @@ namespace SocketAuctionHouse
             // Returns the information to the client
             return "You Bid : " + amount;
         }
-
-
     }
 
     internal class AuctionItem

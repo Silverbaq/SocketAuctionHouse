@@ -40,6 +40,7 @@ namespace SocketAuctionHouse
 
             // Gets the cliens name
             writer.WriteLine("Type your name:");
+            
             _clientName = reader.ReadLine();
 
             writer.WriteLine("Welcome {0}\r\nwrite 'Bye' to close the connection.\r\n'bid' and a number, to bid on an item.", _clientName);
