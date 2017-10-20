@@ -1,0 +1,1 @@
+This project is about selling items. The users is able to connect to the socket and be a part of the auction. When the user places a bit for an item all the other users is able to see the bit and places a new bit higher than the other user.  
